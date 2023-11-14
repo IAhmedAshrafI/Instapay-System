@@ -9,6 +9,8 @@ public class DB {
 	private Map<String, User> bankUsers;
 	private Map<String, Bill> bills;
 	private Fawry fawry;
+	public Bank bank;
+	public WalletProvider walletProvider;
 	/**
 	 * 
 	 * 
@@ -37,6 +39,16 @@ public class DB {
 	public User getUser(String username) {
 		// TODO - implement DB.getUser
 		throw new UnsupportedOperationException();
+	}
+
+	public boolean checkBUser(String username)
+	{
+		return bankUsers.containsKey(username);
+	}
+
+	public boolean checkWUser(String username)
+	{
+		return walletUsers.containsKey(username);
 	}
 }
 

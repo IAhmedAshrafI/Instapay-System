@@ -13,7 +13,7 @@ public class Instapay {
 	private Fawry fawry = new Fawry();
 	private CIB cib = new CIB();
 	private VodafoneCash vodafoneCash = new VodafoneCash();
-	private Bank bank = new Bank();
+	public Bank bank = new Bank();
 
 	public void operation() {
 		// TODO - implement System.operation
@@ -46,7 +46,7 @@ public class Instapay {
 
 	public void run() {
 
-		String name, password, phoneNumber, phoneNumber_OTP, OTP_Code;
+		String name, password, BankNum, phoneNumber, phoneNumber_OTP, OTP_Code;
 		boolean continueDisplay = true;
 		Scanner scanner = new Scanner(System.in);
 
@@ -64,11 +64,20 @@ public class Instapay {
 			System.out.println("3. Login");
 			int userChoice = scanner.nextInt();
 			Validation validation = new Validation();
+			BankValidation bankValidation = new BankValidation();
+			WalletValidation walletValidation = new WalletValidation();
 			
 			switch (userChoice) {
 				case 1:
 					System.out.print("Username: ");
 					name = scanner.next();
+
+					while(bankValidation.validateBankUser(name))
+					{
+						System.out.println("This username is already exist.");
+						System.out.print("Username: ");
+						name = scanner.next();
+					}
 
 					while (!validation.isValidUsername(name)) {
 						System.out.println("Invalid Username.");
@@ -93,6 +102,16 @@ public class Instapay {
 						System.out.println("Invalid Phone number.");
 						System.out.print("Phone number: ");
 						phoneNumber_OTP = scanner.next();
+					}
+
+					System.out.println("Bank number: ");
+					BankNum = scanner.next();
+
+					while(!bankValidation.validateBankData(BankNum))
+					{
+						System.out.println("There is no bank number related with your account.");
+						System.out.println("Bank number: ");
+						BankNum = scanner.next();
 					}
 
 					Registeration SignupBankAcc = new SignupBankAcc();
@@ -149,8 +168,16 @@ public class Instapay {
 
 				case 2:
 
-					System.out.print("Username: ");
-					name = scanner.next();
+				
+				System.out.print("Username: ");
+				name = scanner.next();
+
+				while(walletValidation.validateWalletUser(name))
+				{
+					System.out.println("This username is already exist.");
+						System.out.print("Username: ");
+						name = scanner.next();
+				}
 
 					while (!validation.isValidUsername(name)) {
 						System.out.println("Invalid Username.");
@@ -169,6 +196,7 @@ public class Instapay {
 
 					System.out.print("Phone number: ");
 					phoneNumber = scanner.next();
+					
 
 					while (!validation.isValidPhoneNumber(phoneNumber)) {
 
@@ -176,6 +204,53 @@ public class Instapay {
 						System.out.print("Phone number: ");
 						phoneNumber_OTP = scanner.next();
 					}
+
+					System.out.println("Choose your Wallet");
+					System.out.println("1. CIB");
+					System.out.println("2. Vodafone Cash");
+					System.out.println("3. Fawry");
+					System.out.println("4. Back");
+				int ChooseWallet = scanner.nextInt();
+
+				switch (ChooseWallet) {
+					case 1:
+					CIB cib = new CIB();
+					if (walletValidation.validateWalletData(phoneNumber, cib)) {
+
+						System.out.println("This phone number is existed in cib.");
+
+					}else{
+						System.out.println("This phone number is NOT existed in cib.");
+					}
+						
+						break;
+
+						case 2:
+						VodafoneCash vc = new VodafoneCash();
+						if (walletValidation.validateWalletData(phoneNumber,vc)){
+							System.out.println("This phone number is existed in vodafone cash.");
+							} else {
+								System.out.println("This phone number is NOT existed in vodafone cash.");
+								}
+								break;
+
+						case 3:
+						Fawry fw = new Fawry();
+						if (walletValidation.validateWalletData(phoneNumber, fw)){
+							System.out.println("This phone number is existed in fawry.");
+						}else
+						{
+							System.out.println("This phone number is NOT existed in fawry.");
+						}
+
+						case 4:
+
+						System.out.println("holaa");
+						break;
+				
+					default:
+						break;
+				}
 
 					Registeration SignupWalletAcc = new SignupWalletAcc();
 
