@@ -20,6 +20,7 @@ public class BankAccUser extends User {
 		bankAcc.setBalance(balance);
 		this.balance = balance;
 	}
+	
 	public double getBalance() {
 		return bankAcc.getBalance();
 	}

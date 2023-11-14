@@ -5,7 +5,7 @@ public class DB {
 	private Map<String, User> walletUsers;
 	private Map<String, User> bankUsers;
 	private Map<String, Bill> bills;
-
+	private Fawry fawry;
 	/**
 	 * 
 	 * @param User
@@ -19,7 +19,7 @@ public class DB {
 	 * 
 	 * @param username
 	 */
-	public User getUser(int username) {
+	public User getUser(String username) {
 		// TODO - implement DB.getUser
 		throw new UnsupportedOperationException();
 	}

@@ -26,7 +26,17 @@ public abstract class User {
 
 	public abstract void setBalance(double balance);
 
+	public abstract double getBalance();
+
 	public void setBills(Bill[] bills) {
 		this.bills = bills;
+	}
+
+	public void deposit (double amount) {
+		setBalance(getBalance() + amount);
+	}
+
+	public void withdraw (double amount) {
+		setBalance(getBalance() - amount);
 	}
 }

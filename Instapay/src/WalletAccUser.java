@@ -3,11 +3,6 @@ public class WalletAccUser extends User {
 	private WalletAccTransfer transferStrategy;
 	private WalletAcc walletAcc;
 
-	public void operation() {
-		// TODO - implement WalletAccUser.operation
-		throw new UnsupportedOperationException();
-	}
-
 	public void setTransferStrategy(WalletAccTransfer strategy) {
 		this.transferStrategy = strategy;
 	}
@@ -30,8 +25,16 @@ public class WalletAccUser extends User {
 		this.balance = balance;
 	}
 
-	double getBalance() {
+	public double getBalance() {
 		return walletAcc.getBalance();
+	}
+
+	boolean transfer(String transferTo, Double amount) {
+		if (amount < getBalance()) {
+			return false;
+		}
+		withdraw(amount);
+		return transferStrategy.transfer(transferTo, amount);
 	}
 
 }

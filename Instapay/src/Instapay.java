@@ -4,11 +4,11 @@ import java.util.Scanner;
 public class Instapay {
 
 	private Registeration registeration;
-	private User user;
+	private static User user;
 	private Payment payment;
 	private AccType UserAccType;
 	private Authentication authentication;
-	public DB db;;
+	public static DB db = new DB();
 	private Fawry fawry = new Fawry();
 	private CIB cib = new CIB();
 	private VodafoneCash vodafoneCash = new VodafoneCash();

@@ -5,10 +5,12 @@ public class BankAcc {
 	private Bank bank;
 
 	public void setBalance(double balance) {
+		bank.setClientBalance(accNum, balance);
 		this.balance = balance;
 	}
 
 	public double getBalance() {
+		balance = bank.getClientBalance(accNum);
 		return balance;
 	}
 
