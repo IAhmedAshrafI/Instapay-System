@@ -3,13 +3,25 @@ public class BankAccUser extends User {
 	private BankAccTransfer transferStrategy;
 	private BankAcc bankAcc;
 
-	public void setBalance(double balance) {
-		
+	public void setTransferStrategy(BankAccTransfer transferStrategy) {
+		this.transferStrategy = transferStrategy;
+	}
+	public BankAccTransfer getTransferStrategy() {
+		return transferStrategy;
+	}
+	public void setBankAcc(BankAcc bankAcc) {
+		this.bankAcc = bankAcc;
+	}
+	public BankAcc getBankAcc() {
+		return bankAcc;
 	}
 
-	public void operation() {
-		// TODO - implement BankAccUser.operation
-		throw new UnsupportedOperationException();
+	public void setBalance(double balance) {
+		bankAcc.setBalance(balance);
+		this.balance = balance;
+	}
+	public double getBalance() {
+		return bankAcc.getBalance();
 	}
 
 }

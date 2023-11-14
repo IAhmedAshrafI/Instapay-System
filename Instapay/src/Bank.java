@@ -1,12 +1,24 @@
-import java.util.Map;
+import java.util.HashMap;
 
 public class Bank {
 
-	private Map<String, Double> clients;
+	private HashMap<String, Double> clients = new HashMap<>();
 
-	public void operation() {
-		// TODO - implement Bank.operation
-		throw new UnsupportedOperationException();
+	public void setClients(HashMap<String, Double> clients) {
+		this.clients = clients;
+	}
+	public HashMap<String, Double> getClients() {
+		return clients;
+	}
+
+	public void setClientBalance(String accNum, Double balance) {
+		clients.put(accNum, balance);
+	}
+	public double getClientBalance(String accNum) {
+		return clients.get(accNum);
+	}
+	public boolean containsClient(String accNum) {
+		return clients.containsKey(accNum);
 	}
 
 }
