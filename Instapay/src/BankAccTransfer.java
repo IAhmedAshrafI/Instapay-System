@@ -1,5 +1,5 @@
 public interface BankAccTransfer {
 
-	boolean transfer();
+	boolean transfer(String transferTo, Double amount);
 
 }

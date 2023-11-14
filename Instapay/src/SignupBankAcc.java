@@ -4,12 +4,11 @@ public class SignupBankAcc implements Registeration {
 
 	public void operation() {
 		// TODO - implement SignupBankAcc.operation
-		throw new UnsupportedOperationException();
+		validator.validateBankData("1");
 	}
 
 	public boolean signup() {
-		// TODO - implement SignupBankAcc.signup
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 }

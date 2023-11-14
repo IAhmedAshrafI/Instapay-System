@@ -1,5 +1,5 @@
 public interface WalletAccTransfer {
 
-	boolean transfer();
+	boolean transfer(String transferTo, Double amount);
 
 }

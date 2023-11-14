@@ -8,8 +8,7 @@ public class SignupWalletAcc implements Registeration {
 	}
 
 	public boolean signup() {
-		// TODO - implement SignupWalletAcc.signup
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 }

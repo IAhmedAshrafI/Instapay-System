@@ -1,10 +1,13 @@
 import java.util.HashMap;
-import java.util.Map;
 
 public class DB {
-	private HashMap<String, User> walletUsers;
-	private HashMap<String, User> bankUsers;
+	private HashMap<String, WalletAccUser> walletUsers;
+	private HashMap<String, BankAccUser> bankUsers;
 	private HashMap<String, Bill> bills = new HashMap<>();
+	public Fawry fawry = new Fawry();
+	public CIB cib = new CIB();
+	public VodafoneCash vodafoneCash = new VodafoneCash();
+	public Bank bank = new Bank();
 
 //	public DB(){
 //		Bill bill1 = new ElecBill(100.00 , "123" ,"Noureen");
@@ -24,13 +27,13 @@ public class DB {
 //		bills.put(bill3.getCode(), bill3);
 //		return bills;
 //	}
-	public void addBankUserToDB(User user) {
+	public void addBankUserToDB(BankAccUser user) {
 			bankUsers.put(user.getUsername(),user);
 	}
-	public void addWalletUserToDB(User user) {
+	public void addWalletUserToDB(WalletAccUser user) {
 		walletUsers.put(user.getUsername(),user);
 	}
-	public User getUser(int username) {
+	public User getUser(String username) {
 		if(walletUsers.containsKey(username)){
 			return walletUsers.get(username);
 		} else if(bankUsers.containsKey(username)){
@@ -42,4 +45,14 @@ public class DB {
 	public Bill getBill(String code){return bills.get(code);}
 	public void deleteBill(String code){bills.remove(code);}
 
+	public boolean checkBUser(String username)
+	{
+		return bankUsers.containsKey(username);
+	}
+
+	public boolean checkWUser(String username)
+	{
+		return walletUsers.containsKey(username);
+	}
 }
+

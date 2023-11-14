@@ -1,13 +1,15 @@
 public class TransferToWallet implements BankAccTransfer, WalletAccTransfer {
 
-	public boolean transfer() {
-		// TODO - implement TransferToWallet.transfer
-		throw new UnsupportedOperationException();
+	private WalletProvider wallet;
+
+	public TransferToWallet(WalletProvider wallet) {
+		this.wallet = wallet;
 	}
 
-	public void operation() {
-		// TODO - implement TransferToWallet.operation
-		throw new UnsupportedOperationException();
-	}
+	public boolean transfer(String phoneNum, Double amount) {
+		wallet.setClientBalance(phoneNum, wallet.getClientBalance(phoneNum) + amount);
 
+		return true;
+	}
 }
+

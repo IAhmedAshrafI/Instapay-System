@@ -1,13 +1,11 @@
 public class TransferToAcc implements BankAccTransfer, WalletAccTransfer {
 
-	public boolean transfer() {
-		// TODO - implement TransferToAcc.transfer
-		throw new UnsupportedOperationException();
-	}
+	public boolean transfer(String username, Double amount) {
+		User user = Instapay.db.getUser(username);
+		user.deposit(amount);
 
-	public void operation() {
-		// TODO - implement TransferToAcc.operation
-		throw new UnsupportedOperationException();
+		return true;
+		
 	}
 
 }
