@@ -10,9 +10,9 @@ public class WalletValidation extends Validation {
 	 * @param phoneNum
 	 * @param WalletName
 	 */
-	public boolean validateWalletData(String phoneNum, WalletProvider WalletName) {
+	public boolean validateWalletData(String phoneNum, WalletProvider walletProvider) {
 
-		return Instapay.db.walletProvider.containsClient(phoneNum);
+		return walletProvider.containsClient(phoneNum);
 	}
 
 	public boolean validateWalletUser(String username) {

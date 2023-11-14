@@ -4,14 +4,34 @@ public abstract class Bill {
 	private String code;
 	private String clientName;
 
-	public double inquirePrice() {
-		// TODO - implement Bill.inquirePrice
-		throw new UnsupportedOperationException();
+	public Bill(double price, String code, String clientName) {
+		this.price = price;
+		this.code = code;
+		this.clientName = clientName;
 	}
 
-	public void operation() {
-		// TODO - implement Bill.operation
-		throw new UnsupportedOperationException();
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getClientName() {
+		return clientName;
+	}
+
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 
 	public abstract void displayContent();

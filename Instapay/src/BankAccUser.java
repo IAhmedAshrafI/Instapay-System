@@ -2,7 +2,6 @@ public class BankAccUser extends User {
 
 	private BankAccTransfer transferStrategy;
 	private BankAcc bankAcc;
-	private User user;
 
 	public void setTransferStrategy(BankAccTransfer transferStrategy) {
 		this.transferStrategy = transferStrategy;

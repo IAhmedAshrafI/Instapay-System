@@ -4,16 +4,12 @@ import java.util.Scanner;
 public class Instapay {
 
 	private Registeration registeration;
-	private User user;
+	public static User user;
 	private Payment payment;
 	private AccType UserAccType;
 	private Authentication authentication;
 	private Validation validation;
 	public static DB db = new DB();
-	private Fawry fawry = new Fawry();
-	private CIB cib = new CIB();
-	private VodafoneCash vodafoneCash = new VodafoneCash();
-	public Bank bank = new Bank();
 
 	public void operation() {
 		// TODO - implement System.operation
@@ -33,15 +29,15 @@ public class Instapay {
 		HashMap <String, Double> map = new HashMap<>();
 		map.put("01144455531", 50000.0);
 		map.put("01155544431", 60000.0);
-		fawry.setClients(map);
+		db.fawry.setClients(map);
 		HashMap <String, Double> vodaMap = new HashMap<>();
 		vodaMap.put("01044455531", 50000.0);
 		vodaMap.put("01055544431", 20000.0);
-		vodafoneCash.setClients(vodaMap);
+		db.vodafoneCash.setClients(vodaMap);
 		HashMap <String, Double> cibMap = new HashMap<>();
 		cibMap.put("01244455531", 50000.0);
 		cibMap.put("01255544431", 100000.0);
-		cib.setClients(cibMap);
+		db.cib.setClients(cibMap);
 	}
 
 	public void run() {
@@ -152,10 +148,10 @@ public class Instapay {
 									bankUser.setPassword(password);
 									bankUser.setPhoneNum(phoneNumber_OTP);
 									BankAcc bankAcc = new BankAcc();
-									bankAcc.setBank(bank);
+									bankAcc.setBank(db.bank);
 									bankUser.setBankAcc(bankAcc);
 
-									db.addUserToDB(bankUser);
+									db.addBankUserToDB(bankUser);
 
 									System.out.println("Account created successfully.");
 								}
@@ -285,13 +281,13 @@ public class Instapay {
 
 									DB db = new DB();
 
-									User WalletUser = new WalletAccUser();
+									WalletAccUser WalletUser = new WalletAccUser();
 
 									WalletUser.setUsername(name);
 									WalletUser.setPassword(password);
 									WalletUser.setPhoneNum(phoneNumber);
 
-									db.addUserToDB(WalletUser);
+									db.addWalletUserToDB(WalletUser);
 
 									System.out.println("Account created successfully.");
 								}
