@@ -1,3 +1,4 @@
+import java.util.Random;
 public class OTP {
 
 	private String code;
@@ -6,9 +7,24 @@ public class OTP {
 		
 	}
 
+	public void setCode(String code)
+	{
+		this.code = code;
+	}
+
+	public String getCode()
+	{
+		return code;
+	}
+
 	public String generate() {
-		// TODO - implement OTP.generate
-		throw new UnsupportedOperationException();
+		// Generate a 6-digit random number
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000);
+
+		setCode(String.valueOf(otp));
+
+        return String.valueOf(otp);
 	}
 
 	public void operation() {
@@ -16,9 +32,13 @@ public class OTP {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean verify() {
-		// TODO - implement OTP.verify
-		throw new UnsupportedOperationException();
+	public boolean verify(String OTP_code) {
+		if (OTP_code.equals(getCode()))
+		{
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -26,8 +46,7 @@ public class OTP {
 	 * @param phoneNum
 	 */
 	public boolean send(String phoneNum) {
-		// TODO - implement OTP.send
-		throw new UnsupportedOperationException();
+		return true;
 	}
 
 }

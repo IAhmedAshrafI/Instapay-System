@@ -10,9 +10,15 @@ public class WalletValidation extends Validation {
 	 * @param phoneNum
 	 * @param WalletName
 	 */
-	public boolean validateWalletData(String phoneNum, String WalletName) {
-		// TODO - implement WalletValidation.validateWalletData
-		throw new UnsupportedOperationException();
+	public boolean validateWalletData(String phoneNum, WalletProvider WalletName) {
+
+		return Instapay.db.walletProvider.containsClient(phoneNum);
+	}
+
+	public boolean validateWalletUser(String username) {
+
+		return Instapay.db.checkWUser(username);
+
 	}
 
 }

@@ -6,8 +6,9 @@ public class Authentication {
 	 * @param pass
 	 */
 	public boolean login(String username, String pass) {
-		// TODO - implement Authentication.login
-		throw new UnsupportedOperationException();
+
+	return true;
+		
 	}
 
 	public void operation() {
