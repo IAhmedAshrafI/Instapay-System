@@ -3,16 +3,38 @@ public class WalletAccUser extends User {
 	private WalletAccTransfer transferStrategy;
 	private WalletAcc walletAcc;
 
-	public WalletAccUser(String username, String password, String phoneNum, String type, double balance, Bill[] bills,
-			WalletAccTransfer transferStrategy, WalletAcc walletAcc) {
-		super(username, password, phoneNum, type, balance, bills);
-		this.transferStrategy = transferStrategy;
-		this.walletAcc = walletAcc;
+	public void setTransferStrategy(WalletAccTransfer strategy) {
+		this.transferStrategy = strategy;
 	}
 
-	public void operation() {
-		// TODO - implement WalletAccUser.operation
-		throw new UnsupportedOperationException();
+	public void setWalletAcc(WalletAcc walletAcc) {
+		this.walletAcc = walletAcc;
+		walletAcc.setPhoneNum(phoneNum);
+	}
+
+	public WalletAccTransfer getTransferStrategy() {
+		return transferStrategy;
+	}
+
+	public WalletAcc getWalletAcc() {
+		return walletAcc;
+	}
+
+	public void setBalance(double balance) {
+		walletAcc.setBalance(balance); 
+		this.balance = balance;
+	}
+
+	public double getBalance() {
+		return walletAcc.getBalance();
+	}
+
+	boolean transfer(String transferTo, Double amount) {
+		if (amount < getBalance()) {
+			return false;
+		}
+		withdraw(amount);
+		return transferStrategy.transfer(transferTo, amount);
 	}
 
 }

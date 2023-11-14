@@ -4,40 +4,26 @@ public class BankAccUser extends User {
 	private BankAcc bankAcc;
 	private User user;
 
-	public BankAccUser(String username, String password, String phoneNum, String type, double balance, Bill[] bills,
-			BankAccTransfer transferStrategy, BankAcc bankAcc) {
-		super(username, password, phoneNum, type, balance, bills);
+	public void setTransferStrategy(BankAccTransfer transferStrategy) {
 		this.transferStrategy = transferStrategy;
+	}
+	public BankAccTransfer getTransferStrategy() {
+		return transferStrategy;
+	}
+	public void setBankAcc(BankAcc bankAcc) {
 		this.bankAcc = bankAcc;
 	}
+	public BankAcc getBankAcc() {
+		return bankAcc;
+	}
 
-	// public String getUsername() {
-	// return this.user.getUsername();
-	// }
-
-	// public void setUsername(String username) {
-	// this.user.setUsername(username);
-	// }
-
-	// public String getPassword() {
-	// return this.user.getPassword();
-	// }
-
-	// public void setPassword(String password) {
-	// this.user.setPassword(password);
-	// }
-
-	// public String getPhoneNum() {
-	// return this.user.getPhoneNum();
-	// }
-
-	// public void setPhoneNum(String phoneNum) {
-	// this.user.setPhoneNum(phoneNum);
-	// }
-
-	public void operation() {
-		// TODO - implement BankAccUser.operation
-		throw new UnsupportedOperationException();
+	public void setBalance(double balance) {
+		bankAcc.setBalance(balance);
+		this.balance = balance;
+	}
+	
+	public double getBalance() {
+		return bankAcc.getBalance();
 	}
 
 }

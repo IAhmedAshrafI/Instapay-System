@@ -1,13 +1,15 @@
 public class TransferToBankAcc implements BankAccTransfer {
 
-	public boolean transfer() {
-		// TODO - implement TransferToBankAcc.transfer
-		throw new UnsupportedOperationException();
+	private Bank bank;
+
+	public TransferToBankAcc(Bank bank) {
+		this.bank = bank;
 	}
 
-	public void operation() {
-		// TODO - implement TransferToBankAcc.operation
-		throw new UnsupportedOperationException();
+	public boolean transfer(String accNum, Double amount) {
+		bank.setClientBalance(accNum, bank.getClientBalance(accNum) + amount);
+
+		return true;
 	}
 
 }
