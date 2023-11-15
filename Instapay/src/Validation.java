@@ -1,22 +1,27 @@
 public class Validation {
-
-	/**
-	 * 
-	 * @param username
-	 * @param password
-	 * @param phoneNum
-	 */
 	public boolean validateBasicAcc(String username, String password, String phoneNum) {
-		return isValidUsername(username) && isValidPassword(password) && isValidPhoneNumber(phoneNum); 
+
+		if(!isValidUsername(username)) {
+			Instapay.response.put("message", "Username must be unique.");
+			return false;
+		}
+
+		if(!isValidPassword(password)) {
+			Instapay.response.put("message", "Password must be complex.");
+			return false;
+		}
+		
+		if(!isValidPhoneNumber(phoneNum)) {
+			Instapay.response.put("message", "Invalid Phone number.");
+			return false;
+		}
+
+		return true;
+
 	}
 
-	
-	
-	
 	boolean isValidUsername(String username) {
-		// Username should contain only letters, digits, underscores, and be 3-20 characters long
-        String regex = "^[a-zA-Z0-9_]{3,20}$";
-        return username.matches(regex);
+		return Instapay.db.checkBUser(username) || Instapay.db.checkWUser(username);
 	}
 	
 	boolean isValidPassword(String password) {
@@ -31,9 +36,4 @@ public class Validation {
         return phoneNum.matches(regex);
 	}
 	
-	public void operation() {
-		// TODO - implement Validation.operation
-		throw new UnsupportedOperationException();
-	}
-
 }

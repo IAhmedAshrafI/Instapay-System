@@ -1,30 +1,14 @@
 public class BankValidation extends Validation {
 
-	public void operation() {
-		// TODO - implement BankValidation.operation
-		throw new UnsupportedOperationException();
-	}
+	public boolean validateBankData(String bankNum, Bank bank) {
+		if(!bank.containsClient(bankNum)) {
+			Instapay.response.put("message", "There is no bank account for this number");
+			return false;
+		}
 
-	/**
-	 * 
-	 * @param bankNum
-	 */
-	public boolean validateBankData(String bankNum) {
-
-		try {
-            // If parsing is successful, the input contains only numbers
-            return Instapay.db.bank.containsClient(bankNum);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-		// return Instapay.db.bank.containsClient(bankNum);
+		return true;
     }
 
-	public boolean validateBankUser(String username) {
-
-		return Instapay.db.checkBUser(username);
-
-	}
 		
-	}
+}
 
