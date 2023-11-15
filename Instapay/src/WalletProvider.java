@@ -15,12 +15,19 @@ public abstract class WalletProvider {
 		return clients.get(phoneNum);
 	}
 
-	public double setClientBalance(String phoneNum, Double balance) {
-		return clients.put(phoneNum, balance);
+	public boolean setClientBalance(String phoneNum, Double balance) {
+		clients.put(phoneNum, balance);
+		return true;
 	}
 
 
 	public boolean containsClient(String phoneNum) {
-		return clients.containsKey(phoneNum);
+		if(clients.containsKey(phoneNum)){
+			return true;
+		}
+		else{
+			Instapay.response.put("error message", "Phone number not registered.");
+			return false;
+		}
 	}
 }

@@ -1,11 +1,14 @@
-public class TransferToAcc implements BankAccTransfer, WalletAccTransfer {
+public class TransferToAcc implements Transfer {
 
 	public boolean transfer(String username, Double amount) {
 		User user = Instapay.db.getUser(username);
-		user.deposit(amount);
-
-		return true;
-		
+		if(user.deposit(amount)){
+			return true;
+		}
+		else {
+			Instapay.response.put("error message", "Server is down.");
+			return false;
+		}
 	}
 
 }

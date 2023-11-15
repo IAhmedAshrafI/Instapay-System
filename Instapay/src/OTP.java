@@ -17,19 +17,14 @@ public class OTP {
 		return code;
 	}
 
-	public String generate() {
+	public void generate() {
 		// Generate a 6-digit random number
         Random random = new Random();
         int otp = 100000 + random.nextInt(900000);
 
 		setCode(String.valueOf(otp));
 
-        return String.valueOf(otp);
-	}
-
-	public void operation() {
-		// TODO - implement OTP.operation
-		throw new UnsupportedOperationException();
+        code = String.valueOf(otp);
 	}
 
 	public boolean verify(String OTP_code) {
@@ -41,11 +36,10 @@ public class OTP {
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param phoneNum
-	 */
+
 	public boolean send(String phoneNum) {
+		generate();
+		System.out.println(code + " is your Instapay OTP. Do not share it with anyone.");
 		return true;
 	}
 

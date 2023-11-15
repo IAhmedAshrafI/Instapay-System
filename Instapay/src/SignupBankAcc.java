@@ -1,14 +1,22 @@
 public class SignupBankAcc implements Registeration {
 
-	private BankValidation validator;
+	private BankValidation validator = new BankValidation();
+	private String bankAccNum;
+	private Bank bank;
 
-	public void operation() {
-		// TODO - implement SignupBankAcc.operation
-		validator.validateBankData("1");
+	public SignupBankAcc(String bankAccNum, Bank bank) {
+		this.bankAccNum = bankAccNum;
+		this.bank = bank;
 	}
 
-	public boolean signup() {
-		return true;
-	}
+	public boolean signup(String username, String password, String phoneNum) {
+		if (validator.validateBasicAcc(username, password, phoneNum)) {
+			if(validator.validateBankData(bankAccNum, bank)) {
+				return true;
+			}
+		} 
 
+		return false;
+
+	}
 }

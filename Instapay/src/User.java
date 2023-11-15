@@ -5,11 +5,11 @@ public abstract class User {
 	protected double balance;
 	protected Bill[] bills;
 
-
-
+	protected Transfer transferStrategy;
+	
 
 	public double inquireBalance() {
-		return balance;
+		return getBalance();
 	}
 
 	public void setUsername(String username) {
@@ -31,15 +31,35 @@ public abstract class User {
 
 	public abstract double getBalance();
 
+	public abstract void setTransferStrategy(Transfer transferStrategy);
+	public abstract Transfer getTransferStrategy();
+
 	public void setBills(Bill[] bills) {
 		this.bills = bills;
 	}
 
-	public void deposit (double amount) {
+	public boolean deposit (double amount) {
 		setBalance(getBalance() + amount);
+		return true;
 	}
 
-	public void withdraw (double amount) {
+	public boolean withdraw (double amount) {
+
 		setBalance(getBalance() - amount);
+		return true;
+	}
+
+	public boolean transfer(String transferTo, Double amount) {
+		if (amount > getBalance()) {
+			Instapay.response.put("error message", "Insufficient funds");
+			return false;
+		}
+		if(transferStrategy.transfer(transferTo, amount)){
+			return withdraw(amount);
+		}
+		else{
+			Instapay.response.put("error message", "Server is down.");
+			return false;
+		}
 	}
 }

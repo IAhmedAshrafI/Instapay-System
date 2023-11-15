@@ -1,12 +1,10 @@
 public class BankAccUser extends User {
-
-	private BankAccTransfer transferStrategy;
 	private BankAcc bankAcc;
 
-	public void setTransferStrategy(BankAccTransfer transferStrategy) {
+	public void setTransferStrategy(Transfer transferStrategy) {
 		this.transferStrategy = transferStrategy;
 	}
-	public BankAccTransfer getTransferStrategy() {
+	public Transfer getTransferStrategy() {
 		return transferStrategy;
 	}
 	public void setBankAcc(BankAcc bankAcc) {
@@ -24,5 +22,7 @@ public class BankAccUser extends User {
 	public double getBalance() {
 		return bankAcc.getBalance();
 	}
+
+
 
 }
