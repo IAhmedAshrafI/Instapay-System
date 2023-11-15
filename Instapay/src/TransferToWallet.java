@@ -1,4 +1,4 @@
-public class TransferToWallet implements BankAccTransfer, WalletAccTransfer {
+public class TransferToWallet implements Transfer{
 
 	private WalletProvider wallet;
 

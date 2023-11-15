@@ -1,18 +1,17 @@
 public class WalletAccUser extends User {
 
-	private WalletAccTransfer transferStrategy;
 	private WalletAcc walletAcc;
 
-	public void setTransferStrategy(WalletAccTransfer strategy) {
-		this.transferStrategy = strategy;
-	}
 
 	public void setWalletAcc(WalletAcc walletAcc) {
 		this.walletAcc = walletAcc;
 		walletAcc.setPhoneNum(phoneNum);
 	}
+	public void setTransferStrategy(Transfer strategy) {
+		this.transferStrategy = strategy;
+	}
 
-	public WalletAccTransfer getTransferStrategy() {
+	public Transfer getTransferStrategy() {
 		return transferStrategy;
 	}
 

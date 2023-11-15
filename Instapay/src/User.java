@@ -4,6 +4,8 @@ public abstract class User {
 	protected String phoneNum;
 	protected double balance;
 	protected Bill[] bills;
+
+	protected Transfer transferStrategy;
 	
 
 	public double inquireBalance() {
@@ -28,6 +30,9 @@ public abstract class User {
 	public abstract void setBalance(double balance);
 
 	public abstract double getBalance();
+
+	public abstract void setTransferStrategy(Transfer transferStrategy);
+	public abstract Transfer getTransferStrategy();
 
 	public void setBills(Bill[] bills) {
 		this.bills = bills;

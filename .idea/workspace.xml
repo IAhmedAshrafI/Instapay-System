@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5313e006-6c07-43a1-981f-91b19a31475e" name="Changes" comment="fixing files">
+      <change beforePath="$PROJECT_DIR$/.idea/Instapay-System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Instapay-System.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/BankAccTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/BankAccUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/BankAccUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/Instapay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Instapay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToAcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToAcc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToBankAcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToBankAcc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToWallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToWallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/WalletAccTransfer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/WalletAccUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/WalletAccUser.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Transfer" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2YBfnd5Erz82gsykZu88PcpHaZI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Coding/intellij/Command-Line-Interpreter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="InstapaySystem" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="InstapaySystem" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5313e006-6c07-43a1-981f-91b19a31475e" name="Changes" comment="" />
+      <created>1700004062887</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700004062887</updated>
+      <workItem from="1700004066097" duration="72000" />
+      <workItem from="1700041292819" duration="1662000" />
+      <workItem from="1700043850350" duration="186000" />
+      <workItem from="1700044041028" duration="71000" />
+      <workItem from="1700044117597" duration="128000" />
+      <workItem from="1700044252240" duration="117000" />
+      <workItem from="1700044372235" duration="417000" />
+      <workItem from="1700044797184" duration="1264000" />
+    </task>
+    <task id="LOCAL-00001" summary="fixing files">
+      <created>1700044917125</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700044917125</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Transfer" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixing files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing files" />
+  </component>
+</project>

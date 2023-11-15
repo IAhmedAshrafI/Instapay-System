@@ -1,4 +1,4 @@
-public class TransferToBankAcc implements BankAccTransfer {
+public class TransferToBankAcc implements Transfer {
 
 	private Bank bank;
 
