@@ -5,6 +5,9 @@ public abstract class User {
 	protected double balance;
 	protected Bill[] bills;
 
+
+
+
 	public double inquireBalance() {
 		return balance;
 	}
