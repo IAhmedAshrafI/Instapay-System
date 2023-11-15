@@ -1,6 +1,6 @@
 public class SignupWalletAcc implements Registeration {
 
-	private WalletValidation validator;
+	private WalletValidation validator = new WalletValidation();
 
 	private String walletAccNum;
 	private WalletProvider walletProvider;

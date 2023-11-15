@@ -9,7 +9,7 @@ public abstract class User {
 	
 
 	public double inquireBalance() {
-		return balance;
+		return getBalance();
 	}
 
 	public void setUsername(String username) {
@@ -50,7 +50,7 @@ public abstract class User {
 	}
 
 	public boolean transfer(String transferTo, Double amount) {
-		if (amount < getBalance()) {
+		if (amount > getBalance()) {
 			Instapay.response.put("error message", "Insufficient funds");
 			return false;
 		}

@@ -5,46 +5,33 @@ public class Instapay {
 
 	private Registeration registeration;
 	public static User user;
-	private Payment payment;
-	private AccType UserAccType;
-	private Authentication authentication;
-	private Validation validation;
-	public static DB db = new DB();
+	private Payment payment = new Payment();
+	public static AccType userAccType;
+	private Authentication authentication = new Authentication();
+	public static DB db;
 
 	public static HashMap<String , String> response = new HashMap<String , String>();
 
-
-	public void operation() {
-		// TODO - implement System.operation
-		throw new UnsupportedOperationException();
-	}
-
-	public AccType getUserType() {
-        return UserAccType;
-    }
-
-    // Setter method (optional)
-    public void setUserType(AccType UserAccType) {
-        this.UserAccType = UserAccType;
-    }
-
 	public Instapay() {
-		HashMap <String, Double> map = new HashMap<>();
-		map.put("01144455531", 50000.0);
-		map.put("01155544431", 60000.0);
-		db.fawry.setClients(map);
-		HashMap <String, Double> vodaMap = new HashMap<>();
-		vodaMap.put("01044455531", 50000.0);
-		vodaMap.put("01055544431", 20000.0);
-		db.vodafoneCash.setClients(vodaMap);
-		HashMap <String, Double> cibMap = new HashMap<>();
-		cibMap.put("01244455531", 50000.0);
-		cibMap.put("01255544431", 100000.0);
-		db.cib.setClients(cibMap);
+		db = new DB();
 	}
 
 	public void run() {
 		Scanner scanner = new Scanner(System.in);
+
+		/*
+			You can use this Data if u want to skip the validation
+			It matches all the data validations like uniique username, and complex password .. etc
+		 * username: seif
+		 * password: Seif1234
+		 * phoneNum: 01144455531
+		 * wallet: fawry
+		 * 
+		 * username: Seif5
+		 * password: Seif1234
+		 * phoneNum: 01244455531
+		 * BankNum: 987654321
+		 */
 
 		System.out.println("|----------------------------------------------------------------------|");
 		System.out.println("|                                                                      |");
@@ -57,6 +44,7 @@ public class Instapay {
 			System.out.println("1. SignUp with Bank Account");
 			System.out.println("2. SignUp with Wallet Account");
 			System.out.println("3. Login");
+			System.out.println("4. Exit");
 			int userChoice = scanner.nextInt();	
 			switch (userChoice) {
 				case 1:
@@ -69,6 +57,10 @@ public class Instapay {
 				case 3:
 					AuthenticationView(scanner);
 					break;
+
+				case 4:
+					System.out.println("Thanks for using our system, GoodBye!");
+					System.exit(0);
 				
 				default:
                     System.out.println("Invalid choice. Please enter a valid option.");
@@ -101,9 +93,9 @@ public class Instapay {
 
 
 
-		SignupBankAcc signupBankAcc = new SignupBankAcc(bankNum, db.bank);
+		registeration = new SignupBankAcc(bankNum, db.bank);
 
-		if (signupBankAcc.signup(username,password,phoneNum)) {
+		if (registeration.signup(username,password,phoneNum)) {
 			if (Registeration.otp.send(phoneNum)) {
 				System.out.print("Enter OTP: ");
 				String OTP_Code = scanner.next();
@@ -121,10 +113,13 @@ public class Instapay {
 					bankUser.setPassword(password);
 					bankUser.setPhoneNum(phoneNum);
 					BankAcc bankAcc = new BankAcc();
+					bankAcc.setAccNum(bankNum);
 					bankAcc.setBank(db.bank);
 					bankUser.setBankAcc(bankAcc);
 
 					db.addBankUserToDB(bankUser);
+
+					userAccType = AccType.BA;
 
 					System.out.println("Account created successfully.");
 				}
@@ -148,10 +143,6 @@ public class Instapay {
 		System.out.print("Phone number: ");
 		phoneNum = scanner.next();
 
-		System.out.println("Choose your Wallet");
-		System.out.println("1. CIB");
-		System.out.println("2. Vodafone Cash");
-		System.out.println("3. Fawry");
 		int chooseWallet;
 
 		do {
@@ -179,9 +170,9 @@ public class Instapay {
 				break;
 		}
 
-		SignupWalletAcc signupWalletAcc = new SignupWalletAcc(phoneNum, walletProvider);
+		registeration= new SignupWalletAcc(phoneNum, walletProvider);
 
-		if (signupWalletAcc.signup(username,password,phoneNum)) {
+		if (registeration.signup(username,password,phoneNum)) {
 			if (Registeration.otp.send(phoneNum)) {
 				System.out.print("Enter OTP: ");
 				String OTP_Code = scanner.next();
@@ -199,9 +190,13 @@ public class Instapay {
 					walletUser.setPassword(password);
 					walletUser.setPhoneNum(phoneNum);
 					WalletAcc walletAcc = new WalletAcc();
+					walletAcc.setPhoneNum(phoneNum);
 					walletAcc.setWalletProvider(walletProvider);
+					walletUser.setWalletAcc(walletAcc);
 
 					db.addWalletUserToDB(walletUser);
+
+					userAccType = AccType.WA;
 
 					System.out.println("Account created successfully.");
 				}
@@ -214,18 +209,19 @@ public class Instapay {
 
 	private void AuthenticationView(Scanner scanner) {
 		String name, password;
-		Authentication auth = new Authentication();
 		System.out.print("Username: ");
 		name = scanner.next();
 
 		System.out.print("Password: ");
 		password = scanner.next();
 
-		if (auth.login(name, password))
+		if (authentication.login(name, password))
 		{
 			System.out.println("Login successfully");
 
 			return;
+		} else {
+			System.out.println(response.get("error message"));
 		}
 	}
 
@@ -236,10 +232,12 @@ public class Instapay {
 			System.out.println("2. Transfer to Another instapay account");
 			System.out.println("3. Inquire about your balance");
 			System.out.println("4. Pay bills");
-
-			if(getUserType() == AccType.BA) {
+	
+			if(userAccType == AccType.BA) {
 				System.out.println("5. Transfer to Bank Account");
 			}
+
+			System.out.println("(-1). Logout");
 
 			int userChoice = scanner.nextInt();	
 			switch (userChoice) {
@@ -259,73 +257,81 @@ public class Instapay {
 					break;
 
 				case 5:
-					if(getUserType() == AccType.BA) {
+					if(userAccType == AccType.BA) {
 						transferToBankView(scanner);
 						break;
 					}
+				case -1:
+					authentication.logout();
+					break;
+
 				default:
                     System.out.println("Invalid choice. Please enter a valid option.");
 
+			}
+
+			if(user == null) {
+				run();;
+				break;
 			}
 			
 		}
 	}
 
 	void transferToWalletView(Scanner scanner) {
-		while (true) {
-            System.out.println("Enter a number (1 for fawry 2 for vodafone 3 for cib):");
-            int userChoice = scanner.nextInt();
 
-            System.out.println("Enter a phone number:");
-            String phoneNumber = scanner.next();
+		System.out.println("Enter a number (1 for fawry 2 for vodafone 3 for cib):");
+		int userChoice = scanner.nextInt();
 
-			System.out.println("Enter The amount");
-            double amount = scanner.nextDouble();
+		System.out.println("Enter a phone number:");
+		String phoneNumber = scanner.next();
 
-            switch (userChoice) {
-				case 1:
-					if(db.fawry.containsClient(phoneNumber)) {
-						user.setTransferStrategy(new TransferToWallet(db.fawry));
-						if(user.transfer(phoneNumber, amount)) {
-							System.out.println("Transfered Successfully");
-						} else {
-							System.out.println(response.get("error message"));
-						}
+		System.out.println("Enter The amount");
+		double amount = scanner.nextDouble();
+
+		switch (userChoice) {
+			case 1:
+				if(db.fawry.containsClient(phoneNumber) && user.getPhoneNum() != phoneNumber) {
+					user.setTransferStrategy(new TransferToWallet(db.fawry));
+					if(user.transfer(phoneNumber, amount)) {
+						System.out.println("Transfered Successfully");
 					} else {
 						System.out.println(response.get("error message"));
 					}
-					break;
-				
-				case 2:
-					if(db.vodafoneCash.containsClient(phoneNumber)) {
-						user.setTransferStrategy(new TransferToWallet(db.vodafoneCash));
-						if(user.transfer(phoneNumber, amount)) {
-							System.out.println("Transfered Successfully");
-						} else {
-							System.out.println(response.get("error message"));
-						}
-					} else {
-						System.out.println(response.get("error message"));
-					}
-					break;
-				
-				case 3:
-					if(db.cib.containsClient(phoneNumber)) {
-						user.setTransferStrategy(new TransferToWallet(db.cib));
-						if(user.transfer(phoneNumber, amount)) {
-							System.out.println("Transfered Successfully");
-						} else {
-							System.out.println(response.get("error message"));
-						}
-					} else {
-						System.out.println(response.get("error message"));
-					}
-					break;
-				
-				// Break out of the loop if the number doesn't match 1, 2, or 3
-				default:
-					System.out.println("Number does not match 1, 2, or 3. Breaking out of the loop.");
+				} else {
+					System.out.println(response.get("error message"));
 				}
+				break;
+			
+			case 2:
+				if(db.vodafoneCash.containsClient(phoneNumber) && user.getPhoneNum() != phoneNumber) {
+					user.setTransferStrategy(new TransferToWallet(db.vodafoneCash));
+					if(user.transfer(phoneNumber, amount)) {
+						System.out.println("Transfered Successfully");
+					} else {
+						System.out.println(response.get("error message"));
+					}
+				} else {
+					System.out.println(response.get("error message"));
+				}
+				break;
+			
+			case 3:
+				if(db.cib.containsClient(phoneNumber) && user.getPhoneNum() != phoneNumber) {
+					user.setTransferStrategy(new TransferToWallet(db.cib));
+					if(user.transfer(phoneNumber, amount)) {
+						System.out.println("Transfered Successfully");
+					} else {
+						System.out.println(response.get("error message"));
+					}
+				} else {
+					System.out.println(response.get("error message"));
+				}
+				break;
+			
+			// Break out of the loop if the number doesn't match 1, 2, or 3
+			default:
+				System.out.println("Number does not match 1, 2, or 3. Breaking out of the loop.");
 			}
             
 	}
@@ -338,7 +344,7 @@ public class Instapay {
 		double amount = scanner.nextDouble();
 		user.setTransferStrategy(new TransferToAcc());
 
-		if(db.checkBUser(username) || db.checkWUser(username)) {
+		if((db.checkBUser(username) || db.checkWUser(username)) && user.getUsername() != username) {
 				if(user.transfer(username, amount)){
 					System.out.println("Transfered Successfully");
 				}
@@ -357,7 +363,7 @@ public class Instapay {
 		System.out.println("Enter The amount");
 		double amount = scanner.nextDouble();
 		user.setTransferStrategy(new TransferToBankAcc(db.bank));
-		
+
 		if(db.bank.containsClient(bankAccNum)) {
 			if (user.transfer(bankAccNum, amount)){
 				System.out.println("Transfered Successfully");

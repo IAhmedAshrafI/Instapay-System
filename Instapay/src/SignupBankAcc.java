@@ -1,6 +1,6 @@
 public class SignupBankAcc implements Registeration {
 
-	private BankValidation validator;
+	private BankValidation validator = new BankValidation();
 	private String bankAccNum;
 	private Bank bank;
 

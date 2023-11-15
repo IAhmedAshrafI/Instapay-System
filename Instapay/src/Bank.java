@@ -20,11 +20,11 @@ public class Bank {
 	}
 	public boolean containsClient(String accNum) {
 		if(clients.containsKey(accNum)){
-			Instapay.response.put("error message", "Account number not registered.");
-			return false;
+			return true;
 		}
 		else{
-			return true;
+			Instapay.response.put("error message", "Account number not registered.");
+			return false;
 		}
 	}
 

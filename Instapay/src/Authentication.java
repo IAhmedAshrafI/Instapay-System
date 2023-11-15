@@ -3,6 +3,7 @@ public class Authentication {
 		if(Instapay.db.checkBUser(username)){
 			if(Instapay.db.getUser(username).getPassword().equals(pass)){
 				Instapay.user = Instapay.db.getUser(username);
+				Instapay.userAccType = AccType.BA;
 				return true;
 			}
 			else{
@@ -12,6 +13,7 @@ public class Authentication {
 		} else if(Instapay.db.checkWUser(username)){
 			if(Instapay.db.getUser(username).getPassword().equals(pass)){
 				Instapay.user = Instapay.db.getUser(username);
+				Instapay.userAccType = AccType.WA;
 				return true;
 			}
 			else{
@@ -22,5 +24,9 @@ public class Authentication {
 			Instapay.response.put("error message","User not found");
 			return false;
 		}
+	}
+
+	public void logout() {
+		Instapay.user = null;
 	}
 }

@@ -2,17 +2,17 @@ public class Validation {
 	public boolean validateBasicAcc(String username, String password, String phoneNum) {
 
 		if(!isValidUsername(username)) {
-			Instapay.response.put("message", "Username must be unique.");
+			Instapay.response.put("error message", "Username must be unique.");
 			return false;
 		}
 
 		if(!isValidPassword(password)) {
-			Instapay.response.put("message", "Password must be complex.");
+			Instapay.response.put("error message", "Password must be complex.");
 			return false;
 		}
 		
 		if(!isValidPhoneNumber(phoneNum)) {
-			Instapay.response.put("message", "Invalid Phone number.");
+			Instapay.response.put("error message", "Invalid Phone number.");
 			return false;
 		}
 
@@ -21,7 +21,7 @@ public class Validation {
 	}
 
 	boolean isValidUsername(String username) {
-		return Instapay.db.checkBUser(username) || Instapay.db.checkWUser(username);
+		return !(Instapay.db.checkBUser(username) || Instapay.db.checkWUser(username));
 	}
 	
 	boolean isValidPassword(String password) {
@@ -32,7 +32,7 @@ public class Validation {
 	
 	boolean isValidPhoneNumber(String phoneNum) {
 		// Egyptian phone number should start with "+20" followed by 10 digits
-        String regex = "^\\+20[0-9]{10}$";
+        String regex = "^0[0-9]{10}$";
         return phoneNum.matches(regex);
 	}
 	

@@ -22,12 +22,12 @@ public abstract class WalletProvider {
 
 
 	public boolean containsClient(String phoneNum) {
-		if(!clients.containsKey(phoneNum)){
-			Instapay.response.put("error message", "Phone number not registered.");
-			return false;
+		if(clients.containsKey(phoneNum)){
+			return true;
 		}
 		else{
-			return true;
+			Instapay.response.put("error message", "Phone number not registered.");
+			return false;
 		}
 	}
 }
