@@ -1,4 +1,4 @@
-public interface BankAccTransfer {
+public interface BankAccTransfer{
 
 	boolean transfer(String transferTo, Double amount);
 

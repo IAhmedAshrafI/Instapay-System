@@ -25,4 +25,12 @@ public class BankAccUser extends User {
 		return bankAcc.getBalance();
 	}
 
+	public boolean transfer(String transferTo, Double amount) {
+		if (amount < getBalance()) {
+			return false;
+		}
+		withdraw(amount);
+		return transferStrategy.transfer(transferTo, amount);
+	}
+
 }

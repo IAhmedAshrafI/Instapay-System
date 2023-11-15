@@ -4,9 +4,7 @@ public abstract class User {
 	protected String phoneNum;
 	protected double balance;
 	protected Bill[] bills;
-
-
-
+	
 
 	public double inquireBalance() {
 		return balance;
@@ -42,4 +40,6 @@ public abstract class User {
 	public void withdraw (double amount) {
 		setBalance(getBalance() - amount);
 	}
+
+	public abstract boolean transfer(String transferTo, Double amount);
 }

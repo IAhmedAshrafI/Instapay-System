@@ -29,7 +29,7 @@ public class WalletAccUser extends User {
 		return walletAcc.getBalance();
 	}
 
-	boolean transfer(String transferTo, Double amount) {
+	public boolean transfer(String transferTo, Double amount) {
 		if (amount < getBalance()) {
 			return false;
 		}
