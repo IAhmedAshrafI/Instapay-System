@@ -393,7 +393,7 @@ public class Instapay {
             switch (userChoice) {
 				case 1:
 					if(db.fawry.containsClient(phoneNumber)) {
-						// Here we want to set the strategy
+						user.setTransferStrategy(new TransferToWallet(db.fawry));
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
@@ -406,7 +406,7 @@ public class Instapay {
 				
 				case 2:
 					if(db.vodafoneCash.containsClient(phoneNumber)) {
-						// Here we want to set the strategy
+						user.setTransferStrategy(new TransferToWallet(db.vodafoneCash));
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
@@ -419,7 +419,7 @@ public class Instapay {
 				
 				case 3:
 					if(db.cib.containsClient(phoneNumber)) {
-						// Here we want to set the strategy
+						user.setTransferStrategy(new TransferToWallet(db.cib));
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
@@ -444,7 +444,7 @@ public class Instapay {
 
 		System.out.println("Enter The amount");
 		double amount = scanner.nextDouble();
-		// Here we want to set the strategy
+		user.setTransferStrategy(new TransferToAcc());
 
 		if(db.checkBUser(username)) {
 			user.transfer(username, amount);
@@ -461,7 +461,7 @@ public class Instapay {
 
 		System.out.println("Enter The amount");
 		double amount = scanner.nextDouble();
-		// Here we want to set the strategy
+		user.setTransferStrategy(new TransferToBankAcc(db.bank));
 		
 		if(db.bank.containsClient(bankAccNum)) {
 			user.transfer(bankAccNum, amount);
