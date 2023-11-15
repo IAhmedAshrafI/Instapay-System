@@ -11,6 +11,9 @@ public class Instapay {
 	private Validation validation;
 	public static DB db = new DB();
 
+	public static HashMap<String , String> response = new HashMap<String , String>();
+
+
 	public void operation() {
 		// TODO - implement System.operation
 		throw new UnsupportedOperationException();
@@ -397,10 +400,10 @@ public class Instapay {
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
-							System.out.println("Not sufficient");
+							System.out.println(response.get("error message"));
 						}
 					} else {
-						System.out.println("This Phone Number doesn't have a fawry Wallet");
+						System.out.println(response.get("error message"));
 					}
 					break;
 				
@@ -410,10 +413,10 @@ public class Instapay {
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
-							System.out.println("Not sufficient");
+							System.out.println(response.get("error message"));
 						}
 					} else {
-						System.out.println("This Phone Number doesn't have a Vodafone Cash Wallet");
+						System.out.println(response.get("error message"));
 					}
 					break;
 				
@@ -423,10 +426,10 @@ public class Instapay {
 						if(user.transfer(phoneNumber, amount)) {
 							System.out.println("Transfered Successfully");
 						} else {
-							System.out.println("Not sufficient");
+							System.out.println(response.get("error message"));
 						}
 					} else {
-						System.out.println("This Phone Number doesn't have a CIB Wallet");
+						System.out.println(response.get("error message"));
 					}
 					break;
 				
@@ -446,12 +449,15 @@ public class Instapay {
 		double amount = scanner.nextDouble();
 		user.setTransferStrategy(new TransferToAcc());
 
-		if(db.checkBUser(username)) {
-			user.transfer(username, amount);
-		} else if(db.checkWUser(username)) {
-			user.transfer(username, amount);
+		if(db.checkBUser(username) || db.checkWUser(username)) {
+				if(user.transfer(username, amount)){
+					System.out.println("Transfered Successfully");
+				}
+				else {
+					System.out.println(response.get("error message"));
+				}
 		} else {
-			System.out.println("There is no such username");
+			System.out.println(response.get("error message"));
 		}
 	}
 
@@ -464,17 +470,33 @@ public class Instapay {
 		user.setTransferStrategy(new TransferToBankAcc(db.bank));
 		
 		if(db.bank.containsClient(bankAccNum)) {
-			user.transfer(bankAccNum, amount);
+			if (user.transfer(bankAccNum, amount)){
+				System.out.println("Transfered Successfully");
+			} else {
+				System.out.println(response.get("error message"));
+			}
 		} else {
-			System.out.println("There is no such bank account number");
+			System.out.println(response.get("error message"));
 		}
 	}
 
-	void inquireBalanceView(Scanner scanner) {
 
+
+	void inquireBalanceView(Scanner scanner) {
+		System.out.println("Your balance is: " + user.inquireBalance());
 	}
 
 	void payBillsView(Scanner scanner) {
+		System.out.println("Enter Bill Code:");
+		String billCode = scanner.next();
+
+		if(payment.paybill(billCode)){
+			System.out.println("Bill paid successfully");
+		}
+		else{
+			System.out.println(response.get("error message"));
+		}
+
 
 	}
 

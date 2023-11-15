@@ -28,12 +28,4 @@ public class WalletAccUser extends User {
 		return walletAcc.getBalance();
 	}
 
-	public boolean transfer(String transferTo, Double amount) {
-		if (amount < getBalance()) {
-			return false;
-		}
-		withdraw(amount);
-		return transferStrategy.transfer(transferTo, amount);
-	}
-
 }

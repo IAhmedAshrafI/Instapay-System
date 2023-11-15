@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.HashMap;
 
 public class DB {
@@ -43,16 +44,31 @@ public class DB {
 		}
 	}
 	public Bill getBill(String code){return bills.get(code);}
+	public boolean checkBill(String code){
+		return bills.containsKey(code);
+	}
 	public void deleteBill(String code){bills.remove(code);}
 
 	public boolean checkBUser(String username)
 	{
-		return bankUsers.containsKey(username);
+		if(!bankUsers.containsKey(username)){
+			Instapay.response.put("error message", "User not found");
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 	public boolean checkWUser(String username)
 	{
-		return walletUsers.containsKey(username);
+		if(!walletUsers.containsKey(username)){
+			Instapay.response.put("error message", "User not found");
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 }
 

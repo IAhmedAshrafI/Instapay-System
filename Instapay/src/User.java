@@ -38,13 +38,28 @@ public abstract class User {
 		this.bills = bills;
 	}
 
-	public void deposit (double amount) {
+	public boolean deposit (double amount) {
 		setBalance(getBalance() + amount);
+		return true;
 	}
 
-	public void withdraw (double amount) {
+	public boolean withdraw (double amount) {
+
 		setBalance(getBalance() - amount);
+		return true;
 	}
 
-	public abstract boolean transfer(String transferTo, Double amount);
+	public boolean transfer(String transferTo, Double amount) {
+		if (amount < getBalance()) {
+			Instapay.response.put("error message", "Insufficient funds");
+			return false;
+		}
+		if(transferStrategy.transfer(transferTo, amount)){
+			return withdraw(amount);
+		}
+		else{
+			Instapay.response.put("error message", "Server is down.");
+			return false;
+		}
+	}
 }

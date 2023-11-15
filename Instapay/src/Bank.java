@@ -11,14 +11,21 @@ public class Bank {
 		return clients;
 	}
 
-	public void setClientBalance(String accNum, Double balance) {
+	public boolean setClientBalance(String accNum, Double balance) {
 		clients.put(accNum, balance);
+		return true;
 	}
 	public double getClientBalance(String accNum) {
 		return clients.get(accNum);
 	}
 	public boolean containsClient(String accNum) {
-		return clients.containsKey(accNum);
+		if(clients.containsKey(accNum)){
+			Instapay.response.put("error message", "Account number not registered.");
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 
 }

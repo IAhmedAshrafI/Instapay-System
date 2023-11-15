@@ -7,9 +7,13 @@ public class TransferToWallet implements Transfer{
 	}
 
 	public boolean transfer(String phoneNum, Double amount) {
-		wallet.setClientBalance(phoneNum, wallet.getClientBalance(phoneNum) + amount);
-
-		return true;
+		if(wallet.setClientBalance(phoneNum, wallet.getClientBalance(phoneNum) + amount)){
+			return true;
+		}
+		else{
+			Instapay.response.put("error message", "Server is down.");
+			return false;
+		}
 	}
 }
 

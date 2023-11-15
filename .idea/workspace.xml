@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5313e006-6c07-43a1-981f-91b19a31475e" name="Changes" comment="fixing files">
-      <change beforePath="$PROJECT_DIR$/.idea/Instapay-System.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Instapay-System.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instapay/src/BankAccTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Transfer.java" afterDir="false" />
+    <list default="true" id="5313e006-6c07-43a1-981f-91b19a31475e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Instapay/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/BankAccUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/BankAccUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/DB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/Instapay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Instapay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToAcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToAcc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToBankAcc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToBankAcc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/TransferToWallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/TransferToWallet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instapay/src/WalletAccTransfer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Instapay/src/WalletAccUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/WalletAccUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instapay/src/WalletProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instapay/src/WalletProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
